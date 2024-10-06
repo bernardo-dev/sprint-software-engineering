@@ -1,20 +1,28 @@
 #include "hotel.h"
 
-Hotel::Hotel(const QString& nome, const QString& endereco)
-    : nome(nome), endereco(endereco) {}
+Hotel::Hotel(const QString& name, const QString& address)
+    : name(name), address(address) {}
 
-void Hotel::adicionarQuarto(const Quarto& quarto) {
-    quartos.append(quarto);
+void Hotel::addRoom(const Room& room) {
+    rooms.append(room);
 }
 
-void Hotel::adicionarReserva(const Reserva& reserva) {
-    reservas.append(reserva);
+void Hotel::addReservation(const Reservation& reservation) {
+    reservations.append(reservation);
 }
 
-QVector<Reserva> Hotel::getReservas() const {
-    return reservas;
+void Hotel::addClient(const Client& client) {
+    clients.append(client);  // Adds the client to the list
 }
 
-QVector<Quarto> Hotel::getQuartos() const {
-    return quartos;
+QVector<Reservation> Hotel::getReservations() const {
+    return reservations;
+}
+
+QVector<Room> Hotel::getRooms() const {
+    return rooms;
+}
+
+QVector<Client> Hotel::getClients() const {
+    return clients;  // Returns the list of clients
 }

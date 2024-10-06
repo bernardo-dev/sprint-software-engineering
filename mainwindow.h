@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "client.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -17,7 +18,23 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+private slots:
+    void on_accessControlButton_clicked();
+
+    void on_reserveButton_clicked();
+
+    void on_clientControlButton_clicked();
+
+    void on_reportButton_clicked();
+
+    void on_concludeButton_3_clicked();
+
+    void setupClientComboBox();
+
+    void setupRoomComboBox();
+
 private:
     Ui::MainWindow *ui;
+    QList<Client> clients;
 };
 #endif // MAINWINDOW_H

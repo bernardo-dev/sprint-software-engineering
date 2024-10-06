@@ -27,7 +27,7 @@ Makefile*
 *.prl
 *.app
 moc_*.cpp
-ui_*.h
+# ui_*.h
 qrc_*.cpp
 Thumbs.db
 *.res
@@ -96,7 +96,6 @@ build/
 moc_*.cpp
 moc_*.h
 qrc_*.cpp
-ui_*.h
 
 # Ignore other build files
 *.moc
