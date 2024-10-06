@@ -73,7 +73,7 @@ CMakeLists.txt.user*
 *.exe
 
 # Ignore build directories
-build-*/
+build/
 
 # Ignore Qt user-specific files
 *.pro.user
