@@ -72,3 +72,61 @@ CMakeLists.txt.user*
 *.dll
 *.exe
 
+# Ignore build directories
+build-*/
+
+# Ignore Qt user-specific files
+*.pro.user
+*.pro.user.*
+*.qmake.stash
+*.autosave
+*.swp
+
+# Ignore compiled binary files
+*.obj
+*.o
+*.so
+*.a
+*.dll
+*.dylib
+*.lib
+*.exe
+
+# Ignore moc, ui, and rcc generated files
+moc_*.cpp
+moc_*.h
+qrc_*.cpp
+ui_*.h
+
+# Ignore other build files
+*.moc
+*.qrc
+*.pch
+*.slo
+*.lo
+*.lai
+*.la
+*.loT
+
+# Ignore Qt Creator configuration files
+.qtcreator
+.qbs
+
+# Ignore CMake generated files (if using CMake)
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# Ignore log and temporary files
+*.log
+*.tmp
+*.bak
+*.cache
+*.out
+*.stackdump
+
+# Ignore directories used by popular IDEs (if applicable)
+.idea/
+.vscode/
+.DS_Store
