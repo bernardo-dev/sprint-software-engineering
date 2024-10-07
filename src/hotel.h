@@ -9,36 +9,98 @@
 #include "employee.h"
 #include "manager.h"
 
+/**
+ * @class Hotel
+ * @brief Represents a hotel with a list of rooms, reservations, and clients.
+ */
 class Hotel {
 public:
-    // Construtor padrão (vazio)
+    /**
+     * @brief Default constructor.
+     * Creates an empty Hotel object.
+     */
     Hotel();
 
-    // Construtor parametrizado
+    /**
+     * @brief Parameterized constructor.
+     * Initializes a Hotel object with the provided name and address.
+     * 
+     * @param name The name of the hotel.
+     * @param address The address of the hotel.
+     */
     Hotel(const QString& name, const QString& address);
 
-    // Construtor de cópia
+    /**
+     * @brief Copy constructor.
+     * Creates a copy of another Hotel object.
+     * 
+     * @param other The Hotel object to be copied.
+     */
     Hotel(const Hotel& other);
 
-    // Operador de atribuição
+    /**
+     * @brief Assignment operator.
+     * Assigns the values from one Hotel object to another.
+     * 
+     * @param other The Hotel object to be assigned.
+     * @return A reference to the assigned Hotel object.
+     */
     Hotel& operator=(const Hotel& other);
 
-    // Destrutor virtual
+    /**
+     * @brief Virtual destructor.
+     * Destroys the Hotel object.
+     */
     virtual ~Hotel();
 
+    /**
+     * @brief Adds a room to the hotel's list of rooms.
+     * 
+     * @param room The Room object to be added.
+     */
     void addRoom(const Room& room);
+
+    /**
+     * @brief Adds a reservation to the hotel's list of reservations.
+     * 
+     * @param reservation The Reservation object to be added.
+     */
     void addReservation(const Reservation& reservation);
-    void addClient(const Client& client);  // Novo método para adicionar cliente
+
+    /**
+     * @brief Adds a client to the hotel's list of clients.
+     * 
+     * @param client The Client object to be added.
+     */
+    void addClient(const Client& client);
+
+    /**
+     * @brief Gets the list of reservations for the hotel.
+     * 
+     * @return A QVector of Reservation objects.
+     */
     QVector<Reservation> getReservations() const;
+
+    /**
+     * @brief Gets the list of rooms in the hotel.
+     * 
+     * @return A QVector of Room objects.
+     */
     QVector<Room> getRooms() const;
-    QVector<Client> getClients() const;           // Método para obter a lista de clientes
+
+    /**
+     * @brief Gets the list of clients in the hotel.
+     * 
+     * @return A QVector of Client objects.
+     */
+    QVector<Client> getClients() const;
 
 private:
-    QString name;              // Nome do hotel
-    QString address;           // Endereço do hotel
-    QVector<Room> rooms;      // Lista de quartos
-    QVector<Reservation> reservations; // Lista de reservas
-    QVector<Client> clients;   // Lista de clientes (Novo)
+    QString name;                          ///< The name of the hotel.
+    QString address;                       ///< The address of the hotel.
+    QVector<Room> rooms;                   ///< The list of rooms in the hotel.
+    QVector<Reservation> reservations;     ///< The list of reservations in the hotel.
+    QVector<Client> clients;               ///< The list of clients in the hotel.
 };
 
 #endif // HOTEL_H
