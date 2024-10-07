@@ -148,37 +148,35 @@ void MainWindow::on_concludeReserveButton_clicked()
 }
 
 
-void MainWindow::on_RemoveReservationButton_clicked()
+void MainWindow::on_removeReservationButton_clicked()
 {
     int reservationIndex = ui->removeReservationComboBox->currentIndex();
 
-    if(clientIndex == -1 || roomIndex == -1){
+    if(reservationIndex == -1){
         return;
     }
 
-    Client selectedClient = ui->clientReserveComboBox->itemData(clientIndex).value<Client>();
-    Room selectedRoom = ui->roomReserveComboBox->itemData(roomIndex).value<Room>();
+    Reservation selectedReservation = ui->removeReservationComboBox->itemData(reservationIndex).value<Reservation>();
 
-    ui->clientReserveComboBox->removeItem(clientIndex);
-    ui->roomReserveComboBox->removeItem(roomIndex);
+    ui->removeReservationComboBox->removeItem(reservationIndex);
 
-    QDate initialDate = ui->initialReserveDateEdit->date();
-    QDate endDate = ui->endReserveDateEdit->date();
+    ui->clientReserveComboBox->addItem(selectedReservation.getClient().getName(), QVariant::fromValue(selectedReservation.getClient()));
+    ui->roomReserveComboBox->addItem(QString::number(selectedReservation.getRoom().getNumber()), QVariant::fromValue(selectedReservation.getRoom()));
 
-    Reservation thisReservation(selectedRoom, selectedClient, initialDate, endDate);
 
-    reservations << thisReservation;
+    // qDebug() << "Reservas no hotel:";
+    // for (const Reservation &i : reservations) {
+    //     qDebug() << "Quarto:" << i.getRoom().getNumber()
+    //     << ", Cliente:" << i.getClient().getName()
+    //     << ", Data de Entrada:" << i.getCheckInDate()
+    //     << ", Data de Saída:" << i.getCheckOutDate();
+    // }
+    // //mensagem de adicionado com sucesso
 
-    qDebug() << "Reservas no hotel:";
-    for (const Reservation &i : reservations) {
-        qDebug() << "Quarto:" << i.getRoom().getNumber()
-        << ", Cliente:" << i.getClient().getName()
-        << ", Data de Entrada:" << i.getCheckInDate()
-        << ", Data de Saída:" << i.getCheckOutDate();
-    }
-    //mensagem de adicionado com sucesso
-
-    ui->removeReservationComboBox->addItem((thisReservation.getClient().getName() + " - Quarto: " + QString::number(thisReservation.getRoom().getNumber())), QVariant::fromValue(thisReservation));
+    //ui->removeReservationComboBox->addItem((thisReservation.getClient().getName() + " - Quarto: " + QString::number(thisReservation.getRoom().getNumber())), QVariant::fromValue(thisReservation));
 
 }
+
+
+
 

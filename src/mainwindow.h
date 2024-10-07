@@ -39,7 +39,7 @@ private slots:
 
     void on_concludeReserveButton_clicked();
 
-    void on_RemoveReservationButton_clicked();
+    void on_removeReservationButton_clicked();
 
 private:
     Ui::ControleHotel *ui;
