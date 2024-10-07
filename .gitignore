@@ -35,6 +35,10 @@ Thumbs.db
 /.qmake.cache
 /.qmake.stash
 
+# doxygen paths
+docs/html
+docs/latex
+
 # qtcreator generated files
 *.pro.user*
 CMakeLists.txt.user*
