@@ -6,7 +6,7 @@
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
-class MainWindow;
+class ControleHotel;
 }
 QT_END_NAMESPACE
 
@@ -27,14 +27,14 @@ private slots:
 
     void on_reportButton_clicked();
 
-    void on_concludeButton_3_clicked();
+    // void on_concludeButton_3_clicked();
 
     void setupClientComboBox();
 
     void setupRoomComboBox();
 
 private:
-    Ui::MainWindow *ui;
+    Ui::ControleHotel *ui;
     QList<Client> clients;
 };
 #endif // MAINWINDOW_H

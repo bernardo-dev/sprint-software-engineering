@@ -1,17 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>MainWindow</class>
- <widget class="QMainWindow" name="MainWindow">
+ <class>ControleHotel</class>
+ <widget class="QMainWindow" name="ControleHotel">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
     <width>602</width>
-    <height>392</height>
+    <height>400</height>
    </rect>
   </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>500</width>
+    <height>400</height>
+   </size>
+  </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Controle do Hotel</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QPushButton" name="accessControlButton">
@@ -22,6 +34,11 @@
       <width>161</width>
       <height>23</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>11</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>Controle de Acesso</string>
@@ -36,6 +53,11 @@
       <height>23</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>11</pointsize>
+     </font>
+    </property>
     <property name="text">
      <string>Reserva</string>
     </property>
@@ -49,6 +71,11 @@
       <height>23</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>11</pointsize>
+     </font>
+    </property>
     <property name="text">
      <string>Controle de Clientes</string>
     </property>
@@ -61,6 +88,11 @@
       <width>161</width>
       <height>23</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>11</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>Relatórios</string>
@@ -79,20 +111,20 @@
      <string notr="true"/>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>3</number>
     </property>
     <widget class="QWidget" name="controlAccessPage">
-     <widget class="QPushButton" name="pushButton_6">
+     <widget class="QLabel" name="controlAccessPageLabel">
       <property name="geometry">
        <rect>
-        <x>20</x>
-        <y>20</y>
-        <width>80</width>
-        <height>23</height>
+        <x>70</x>
+        <y>50</y>
+        <width>221</width>
+        <height>16</height>
        </rect>
       </property>
       <property name="text">
-       <string>PushButton</string>
+       <string>Tela de Controle de Acesso</string>
       </property>
      </widget>
     </widget>
@@ -154,7 +186,7 @@
        <widget class="QComboBox" name="clientReserveComboBox">
         <property name="geometry">
          <rect>
-          <x>110</x>
+          <x>100</x>
           <y>30</y>
           <width>241</width>
           <height>24</height>
@@ -177,11 +209,57 @@
        <widget class="QComboBox" name="roomReserveComboBox">
         <property name="geometry">
          <rect>
-          <x>110</x>
+          <x>100</x>
           <y>70</y>
           <width>241</width>
           <height>24</height>
          </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="periodReserveLabel">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>140</y>
+          <width>65</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Período</string>
+        </property>
+       </widget>
+       <widget class="QDateEdit" name="initialReserveDateEdit">
+        <property name="geometry">
+         <rect>
+          <x>100</x>
+          <y>140</y>
+          <width>110</width>
+          <height>23</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QDateEdit" name="endReserveDateEdit">
+        <property name="geometry">
+         <rect>
+          <x>250</x>
+          <y>140</y>
+          <width>110</width>
+          <height>23</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="aReserveLabel">
+        <property name="geometry">
+         <rect>
+          <x>220</x>
+          <y>140</y>
+          <width>21</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>a</string>
         </property>
        </widget>
       </widget>
@@ -210,7 +288,7 @@
        <attribute name="title">
         <string>Criar</string>
        </attribute>
-       <widget class="QLineEdit" name="nameLineEdit_3">
+       <widget class="QLineEdit" name="nameControlClientLineEdit">
         <property name="geometry">
          <rect>
           <x>150</x>
@@ -220,7 +298,7 @@
          </rect>
         </property>
        </widget>
-       <widget class="QLineEdit" name="documentLineEdit_3">
+       <widget class="QLineEdit" name="documentControlClientLineEdit">
         <property name="geometry">
          <rect>
           <x>150</x>
@@ -230,7 +308,7 @@
          </rect>
         </property>
        </widget>
-       <widget class="QLineEdit" name="addressLineEdit_3">
+       <widget class="QLineEdit" name="addressClientControlLineEdit">
         <property name="geometry">
          <rect>
           <x>150</x>
@@ -240,7 +318,7 @@
          </rect>
         </property>
        </widget>
-       <widget class="QLineEdit" name="cellphoneLineEdit_3">
+       <widget class="QLineEdit" name="cellphoneControlClientLineEdit">
         <property name="geometry">
          <rect>
           <x>150</x>
@@ -250,7 +328,7 @@
          </rect>
         </property>
        </widget>
-       <widget class="QLabel" name="nameLabel_3">
+       <widget class="QLabel" name="nameControlClientLabel">
         <property name="geometry">
          <rect>
           <x>40</x>
@@ -263,12 +341,12 @@
          <string>Nome</string>
         </property>
        </widget>
-       <widget class="QLabel" name="documentLabel_3">
+       <widget class="QLabel" name="documentControlClientLabel">
         <property name="geometry">
          <rect>
           <x>40</x>
           <y>110</y>
-          <width>65</width>
+          <width>81</width>
           <height>16</height>
          </rect>
         </property>
@@ -276,25 +354,31 @@
          <string>Documento</string>
         </property>
        </widget>
-       <widget class="QLabel" name="addressLabel_3">
+       <widget class="QLabel" name="addressClientControlLabel">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
         <property name="geometry">
          <rect>
           <x>40</x>
           <y>160</y>
-          <width>65</width>
+          <width>81</width>
           <height>16</height>
          </rect>
         </property>
         <property name="text">
          <string>Endereço</string>
         </property>
+        <property name="textFormat">
+         <enum>Qt::TextFormat::AutoText</enum>
+        </property>
        </widget>
-       <widget class="QLabel" name="cellphoneLabel_3">
+       <widget class="QLabel" name="cellphoneClientControlLineEdit">
         <property name="geometry">
          <rect>
           <x>40</x>
           <y>200</y>
-          <width>65</width>
+          <width>81</width>
           <height>16</height>
          </rect>
         </property>
@@ -302,7 +386,7 @@
          <string>Telefone</string>
         </property>
        </widget>
-       <widget class="QPushButton" name="concludeButton_3">
+       <widget class="QPushButton" name="concludeControlClientButton">
         <property name="geometry">
          <rect>
           <x>150</x>
@@ -318,7 +402,24 @@
       </widget>
      </widget>
     </widget>
-    <widget class="QWidget" name="reportPage"/>
+    <widget class="QWidget" name="reportPage">
+     <widget class="QLabel" name="reportPageLabel">
+      <property name="geometry">
+       <rect>
+        <x>104</x>
+        <y>80</y>
+        <width>201</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Tela de Reserva</string>
+      </property>
+      <property name="buddy">
+       <cstring>reportPageLabel</cstring>
+      </property>
+     </widget>
+    </widget>
    </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>

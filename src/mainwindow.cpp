@@ -2,11 +2,11 @@
 #include "ui_mainwindow.h"
 #include <QStandardItemModel>
 #include <QStandardItem>
-#include "room.h"
+#include "src/room.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
-    , ui(new Ui::MainWindow)
+    , ui(new Ui::ControleHotel)
 {
     ui->setupUi(this);
     setupClientComboBox();
@@ -38,14 +38,14 @@ void MainWindow::on_reportButton_clicked()
     ui->stackedWidget->setCurrentIndex(3);
 }
 
-void MainWindow::on_concludeButton_3_clicked()
-{
-    QString name = ui->nameLineEdit_3->text();
-    QString document = ui->documentLineEdit_3->text();
-    QString address = ui->addressLineEdit_3->text();
-    QString phoneNumber = ui->cellphoneLineEdit_3->text();
+// void MainWindow::on_concludeButton_3_clicked()
+// {
+//     QString name = ui->nameLineEdit_3->text();
+//     QString document = ui->documentLineEdit_3->text();
+//     QString address = ui->addressClientControlLineEdit->text();
+//     QString phoneNumber = ui->cellphoneControlClientLineEdit->text();
 
-}
+// }
 
 QList<Client> getClients() {
     Client cliente1("João Silva", "123456789", "Av. Brasil, 456", "(11) 98765-4321");
