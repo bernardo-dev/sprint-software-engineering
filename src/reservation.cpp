@@ -1,17 +1,17 @@
 #include "reservation.h"
 
 // Construtor padrão
-Reservation::Reservation() 
-    : room(), client(), checkInDate(""), checkOutDate(""), responsible("") {}
+Reservation::Reservation()
+    : room(), client(), checkInDate(), checkOutDate() {}
 
 // Construtor parametrizado
-Reservation::Reservation(const Room& room, const Client& client, const QString& checkInDate, const QString& checkOutDate, const QString& responsible)
-    : room(room), client(client), checkInDate(checkInDate), checkOutDate(checkOutDate), responsible(responsible) {}
+Reservation::Reservation(const Room& room, const Client& client, const QDate& checkInDate, const QDate& checkOutDate)
+    : room(room), client(client), checkInDate(checkInDate), checkOutDate(checkOutDate) {}
 
 // Construtor de cópia
 Reservation::Reservation(const Reservation& other)
     : room(other.room), client(other.client), 
-      checkInDate(other.checkInDate), checkOutDate(other.checkOutDate), responsible(other.responsible) {}
+      checkInDate(other.checkInDate), checkOutDate(other.checkOutDate) {}
 
 // Operador de atribuição
 Reservation& Reservation::operator=(const Reservation& other) {
@@ -20,7 +20,6 @@ Reservation& Reservation::operator=(const Reservation& other) {
         client = other.client;
         checkInDate = other.checkInDate;
         checkOutDate = other.checkOutDate;
-        responsible = other.responsible;
     }
     return *this;
 }
@@ -39,14 +38,11 @@ Client Reservation::getClient() const {
     return client;
 }
 
-QString Reservation::getCheckInDate() const {
+QDate Reservation::getCheckInDate() const {
     return checkInDate;
 }
 
-QString Reservation::getCheckOutDate() const {
+QDate Reservation::getCheckOutDate() const {
     return checkOutDate;
 }
 
-QString Reservation::getResponsible() const {
-    return responsible;
-}

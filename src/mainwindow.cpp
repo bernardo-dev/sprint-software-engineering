@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include <QStandardItemModel>
 #include <QStandardItem>
+#include <QMessageBox>
 #include "src/room.h"
 
 MainWindow::MainWindow(QWidget *parent)
@@ -9,6 +10,9 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::ControleHotel)
 {
     ui->setupUi(this);
+    reservations.clear();
+    rooms.clear();
+    clients.clear();
     setupClientComboBox();
     setupRoomComboBox();
 }
@@ -88,19 +92,93 @@ QList<Room> getRooms() {
 void MainWindow::setupClientComboBox()
 {
     // Assuming you have a method to get the list of clients
-    QList<Client> clients = getClients(); // Replace with actual method to get clients
+    clients = getClients(); // Replace with actual method to get clients
 
     // Populate the model with client data
     for (const Client &client : clients) {
-        ui->clientReserveComboBox->addItem(client.getName());
+        ui->clientReserveComboBox->addItem(client.getName(), QVariant::fromValue(client));
     }
 }
 
 void MainWindow::setupRoomComboBox()
 {
-    QList<Room> rooms = getRooms();
+    rooms = getRooms();
 
     for (const Room &room : rooms) {
-        ui->roomReserveComboBox->addItem(QString::number(room.getNumber()));
+        ui->roomReserveComboBox->addItem(QString::number(room.getNumber()), QVariant::fromValue(room));
     }
 }
+
+
+
+
+void MainWindow::on_concludeReserveButton_clicked()
+{
+    int clientIndex = ui->clientReserveComboBox->currentIndex();
+    int roomIndex = ui->roomReserveComboBox->currentIndex();
+
+    if(clientIndex == -1 || roomIndex == -1){
+        return;
+    }
+
+    Client selectedClient = ui->clientReserveComboBox->itemData(clientIndex).value<Client>();
+    Room selectedRoom = ui->roomReserveComboBox->itemData(roomIndex).value<Room>();
+
+    ui->clientReserveComboBox->removeItem(clientIndex);
+    ui->roomReserveComboBox->removeItem(roomIndex);
+
+    QDate initialDate = ui->initialReserveDateEdit->date();
+    QDate endDate = ui->endReserveDateEdit->date();
+
+    Reservation thisReservation(selectedRoom, selectedClient, initialDate, endDate);
+
+    reservations << thisReservation;
+
+    qDebug() << "Reservas no hotel:";
+    for (const Reservation &i : reservations) {
+        qDebug() << "Quarto:" << i.getRoom().getNumber()
+        << ", Cliente:" << i.getClient().getName()
+        << ", Data de Entrada:" << i.getCheckInDate()
+        << ", Data de Saída:" << i.getCheckOutDate();
+    }
+    //mensagem de adicionado com sucesso
+
+    ui->removeReservationComboBox->addItem((thisReservation.getClient().getName() + " - Quarto: " + QString::number(thisReservation.getRoom().getNumber())), QVariant::fromValue(thisReservation));
+
+}
+
+
+void MainWindow::on_RemoveReservationButton_clicked()
+{
+    int reservationIndex = ui->removeReservationComboBox->currentIndex();
+
+    if(clientIndex == -1 || roomIndex == -1){
+        return;
+    }
+
+    Client selectedClient = ui->clientReserveComboBox->itemData(clientIndex).value<Client>();
+    Room selectedRoom = ui->roomReserveComboBox->itemData(roomIndex).value<Room>();
+
+    ui->clientReserveComboBox->removeItem(clientIndex);
+    ui->roomReserveComboBox->removeItem(roomIndex);
+
+    QDate initialDate = ui->initialReserveDateEdit->date();
+    QDate endDate = ui->endReserveDateEdit->date();
+
+    Reservation thisReservation(selectedRoom, selectedClient, initialDate, endDate);
+
+    reservations << thisReservation;
+
+    qDebug() << "Reservas no hotel:";
+    for (const Reservation &i : reservations) {
+        qDebug() << "Quarto:" << i.getRoom().getNumber()
+        << ", Cliente:" << i.getClient().getName()
+        << ", Data de Entrada:" << i.getCheckInDate()
+        << ", Data de Saída:" << i.getCheckOutDate();
+    }
+    //mensagem de adicionado com sucesso
+
+    ui->removeReservationComboBox->addItem((thisReservation.getClient().getName() + " - Quarto: " + QString::number(thisReservation.getRoom().getNumber())), QVariant::fromValue(thisReservation));
+
+}
+

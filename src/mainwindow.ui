@@ -192,6 +192,9 @@
           <height>24</height>
          </rect>
         </property>
+        <property name="insertPolicy">
+         <enum>QComboBox::InsertPolicy::InsertAlphabetically</enum>
+        </property>
        </widget>
        <widget class="QLabel" name="roomReserveLabel">
         <property name="geometry">
@@ -214,6 +217,9 @@
           <width>241</width>
           <height>24</height>
          </rect>
+        </property>
+        <property name="insertPolicy">
+         <enum>QComboBox::InsertPolicy::InsertAlphabetically</enum>
         </property>
        </widget>
        <widget class="QLabel" name="periodReserveLabel">
@@ -299,6 +305,47 @@
         </property>
         <property name="text">
          <string>a</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="tab">
+       <attribute name="title">
+        <string>Remover</string>
+       </attribute>
+       <widget class="QComboBox" name="removeReservationComboBox">
+        <property name="geometry">
+         <rect>
+          <x>70</x>
+          <y>70</y>
+          <width>241</width>
+          <height>24</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="RemoveReservationLabel">
+        <property name="geometry">
+         <rect>
+          <x>160</x>
+          <y>50</y>
+          <width>57</width>
+          <height>14</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Reservas</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="removeReservationButton">
+        <property name="geometry">
+         <rect>
+          <x>150</x>
+          <y>210</y>
+          <width>80</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Remover</string>
         </property>
        </widget>
       </widget>

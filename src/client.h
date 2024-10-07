@@ -2,6 +2,7 @@
 #define CLIENT_H
 
 #include <QString>
+#include <QMetaType>
 
 class Client {
 public:
@@ -31,5 +32,7 @@ private:
     QString address;   // Endereço do cliente
     QString phone;     // Número de telefone do cliente
 };
+
+Q_DECLARE_METATYPE(Client)
 
 #endif // CLIENT_H

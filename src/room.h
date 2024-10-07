@@ -2,6 +2,7 @@
 #define ROOM_H
 
 #include <QString>
+#include<QMetaType>
 
 class Room {
 public:
@@ -27,5 +28,7 @@ private:
     int number;  // Número do quarto
     double price; // Preço do quarto
 };
+
+Q_DECLARE_METATYPE(Room)
 
 #endif // ROOM_H

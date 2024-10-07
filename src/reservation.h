@@ -3,6 +3,7 @@
 
 #include <QString>
 #include <QVector>
+#include <QDate>
 #include "room.h"
 #include "client.h"
 
@@ -12,7 +13,7 @@ public:
     Reservation();
 
     // Construtor parametrizado
-    Reservation(const Room& room, const Client& client, const QString& checkInDate, const QString& checkOutDate, const QString& responsible);
+    Reservation(const Room& room, const Client& client, const QDate& checkInDate, const QDate& checkOutDate);
 
     // Construtor de cópia
     Reservation(const Reservation& other);
@@ -25,16 +26,16 @@ public:
 
     Room getRoom() const;
     Client getClient() const;
-    QString getCheckInDate() const;
-    QString getCheckOutDate() const;
-    QString getResponsible() const;
+    QDate getCheckInDate() const;
+    QDate getCheckOutDate() const;
 
 private:
     Room room;               // Quarto reservado
     Client client;           // Cliente da reserva
-    QString checkInDate;     // Data de check-in
-    QString checkOutDate;    // Data de check-out
-    QString responsible;      // Nome da pessoa responsável pela reserva
+    QDate checkInDate;     // Data de check-in
+    QDate checkOutDate;    // Data de check-out
 };
+
+Q_DECLARE_METATYPE(Reservation)
 
 #endif // RESERVATION_H

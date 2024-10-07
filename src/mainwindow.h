@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 #include "client.h"
+#include "room.h"
+#include "reservation.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -33,8 +35,16 @@ private slots:
 
     void setupRoomComboBox();
 
+    //void on_concludeControlClientButton_clicked();
+
+    void on_concludeReserveButton_clicked();
+
+    void on_RemoveReservationButton_clicked();
+
 private:
     Ui::ControleHotel *ui;
     QList<Client> clients;
+    QList<Room> rooms;
+    QList<Reservation> reservations;
 };
 #endif // MAINWINDOW_H
