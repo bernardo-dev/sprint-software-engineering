@@ -123,7 +123,16 @@ void MainWindow::on_concludeReserveButton_clicked()
     int clientIndex = ui->clientReserveComboBox->currentIndex();
     int roomIndex = ui->roomReserveComboBox->currentIndex();
 
+    QDate initialDate = ui->initialReserveDateEdit->date();
+    QDate endDate = ui->endReserveDateEdit->date();
+
+    if((initialDate.daysTo(endDate) < 1)){
+        QMessageBox::information(this, "ERRO", "Falha ao criar reserva, Período de tempo inválido", QMessageBox::Close);
+        return;
+    }
+
     if(clientIndex == -1 || roomIndex == -1){
+        QMessageBox::information(this, "ERRO", "Falha ao criar reserva", QMessageBox::Close);
         return;
     }
 
@@ -133,8 +142,6 @@ void MainWindow::on_concludeReserveButton_clicked()
     ui->clientReserveComboBox->removeItem(clientIndex);
     ui->roomReserveComboBox->removeItem(roomIndex);
 
-    QDate initialDate = ui->initialReserveDateEdit->date();
-    QDate endDate = ui->endReserveDateEdit->date();
 
     Reservation thisReservation(selectedRoom, selectedClient, initialDate, endDate);
 
@@ -150,6 +157,7 @@ void MainWindow::on_concludeReserveButton_clicked()
     //mensagem de adicionado com sucesso
 
     ui->removeReservationComboBox->addItem((thisReservation.getClient().getName() + " - Quarto: " + QString::number(thisReservation.getRoom().getNumber())), QVariant::fromValue(thisReservation));
+    QMessageBox::information(this, "Sucesso", "Reserva para " + selectedClient.getName() + " adicionado com sucesso", QMessageBox::Close);
 
 }
 
@@ -165,7 +173,7 @@ void MainWindow::on_removeReservationButton_clicked()
     Reservation selectedReservation = ui->removeReservationComboBox->itemData(reservationIndex).value<Reservation>();
 
     ui->removeReservationComboBox->removeItem(reservationIndex);
-
+    reservations.removeAt(reservationIndex);
     ui->clientReserveComboBox->addItem(selectedReservation.getClient().getName(), QVariant::fromValue(selectedReservation.getClient()));
     ui->roomReserveComboBox->addItem(QString::number(selectedReservation.getRoom().getNumber()), QVariant::fromValue(selectedReservation.getRoom()));
 
@@ -177,9 +185,8 @@ void MainWindow::on_removeReservationButton_clicked()
     //     << ", Data de Entrada:" << i.getCheckInDate()
     //     << ", Data de Saída:" << i.getCheckOutDate();
     // }
-    // //mensagem de adicionado com sucesso
 
-    //ui->removeReservationComboBox->addItem((thisReservation.getClient().getName() + " - Quarto: " + QString::number(thisReservation.getRoom().getNumber())), QVariant::fromValue(thisReservation));
+
 
 }
 
@@ -193,8 +200,9 @@ void MainWindow::on_concludeControlAccessButton_clicked()
 {
 
     int index = ui->positionControlAccessComboBox->currentIndex();
-    if(index == -1){
+    if(index == -1 || ui->nameControlAccessLineEdit->text().isEmpty()){
         ui->nameControlAccessLineEdit->clear();
+        QMessageBox::information(this, "ERRO", "Falha ao adicionar Usuário", QMessageBox::Close);
         return;
     }
     QString position = ui->positionControlAccessComboBox->itemText(index);
@@ -204,6 +212,7 @@ void MainWindow::on_concludeControlAccessButton_clicked()
 
     employees << e;
     ui->nameControlAccessLineEdit->clear();
+    QMessageBox::information(this, "Sucesso", "Usuário " + name + " adicionado com sucesso", QMessageBox::Close);
 
 }
 
@@ -215,6 +224,11 @@ void MainWindow::on_concludeControlClientButton_clicked()
     QString address = ui->addressClientControlLineEdit->text();
     QString phone = ui->cellphoneControlClientLineEdit->text();
 
+    if(name.isEmpty() || document.isEmpty() || address.isEmpty() || phone.isEmpty()){
+        QMessageBox::information(this, "ERRO", "Falha ao adicionar Cliente", QMessageBox::Close);
+        return;
+    }
+
     Client c(name, document, address, phone);
     clients << c;
 
@@ -224,6 +238,8 @@ void MainWindow::on_concludeControlClientButton_clicked()
     ui->documentControlClientLineEdit->clear();
     ui->addressClientControlLineEdit->clear();
     ui->cellphoneControlClientLineEdit->clear();
+
+    QMessageBox::information(this, "Sucesso", "Cliente  " + name + " adicionado com sucesso", QMessageBox::Close);
 }
 
 
@@ -232,11 +248,18 @@ void MainWindow::on_concludeRoomAccessButton_clicked()
     int roomNumber = ui->roomControlspinBox->value();
     double roomPrice = ui->roomControldoubleSpinBox->value();
 
+    if(!roomNumber || !roomPrice){
+        QMessageBox::information(this, "ERRO", "Falha ao adicionar quarto", QMessageBox::Close);
+        return;
+    }
+
     Room r(roomNumber, roomPrice);
     ui->roomReserveComboBox->addItem(QString::number(r.getNumber()), QVariant::fromValue(r));
 
     ui->roomControlspinBox->clear();
     ui->roomControldoubleSpinBox->clear();
+
+    QMessageBox::information(this, "Sucesso", "Quarto  " + QString::number(roomNumber) + " adicionado com sucesso", QMessageBox::Close);
 
 }
 

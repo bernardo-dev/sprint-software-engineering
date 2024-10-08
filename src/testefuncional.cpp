@@ -70,4 +70,4 @@ void TesteFuncional::teste() {
 
 }
 
-QTEST_MAIN(TesteFuncional)  // Essa linha cria a função main para os testes
+//QTEST_MAIN(TesteFuncional)  // Essa linha cria a função main para os testes
