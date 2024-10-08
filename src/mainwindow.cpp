@@ -176,13 +176,9 @@ void MainWindow::on_removeReservationButton_clicked()
     reservations.removeAt(reservationIndex);
     ui->clientReserveComboBox->addItem(selectedReservation.getClient().getName(), QVariant::fromValue(selectedReservation.getClient()));
     ui->roomReserveComboBox->addItem(QString::number(selectedReservation.getRoom().getNumber()), QVariant::fromValue(selectedReservation.getRoom()));
+
+
 }
-
-
-
-
-
-
 
 void MainWindow::on_concludeControlAccessButton_clicked()
 {
