@@ -127,7 +127,7 @@ void MainWindow::on_concludeReserveButton_clicked()
     QDate endDate = ui->endReserveDateEdit->date();
 
     if((initialDate.daysTo(endDate) < 1)){
-        QMessageBox::information(this, "ERRO", "Falha ao criar reserva, Período de tempo inválido", QMessageBox::Close);
+        // QMessageBox::information(this, "ERRO", "Falha ao criar reserva, Período de tempo inválido", QMessageBox::Close);
         return;
     }
 
@@ -147,18 +147,18 @@ void MainWindow::on_concludeReserveButton_clicked()
 
     reservations << thisReservation;
 
-    qDebug() << "Reservas no hotel:";
-    for (const Reservation &i : reservations) {
-        qDebug() << "Quarto:" << i.getRoom().getNumber()
-        << ", Cliente:" << i.getClient().getName()
-        << ", Data de Entrada:" << i.getCheckInDate()
-        << ", Data de Saída:" << i.getCheckOutDate();
-    }
-    //mensagem de adicionado com sucesso
-
     ui->removeReservationComboBox->addItem((thisReservation.getClient().getName() + " - Quarto: " + QString::number(thisReservation.getRoom().getNumber())), QVariant::fromValue(thisReservation));
-    QMessageBox::information(this, "Sucesso", "Reserva para " + selectedClient.getName() + " adicionado com sucesso", QMessageBox::Close);
+    // QMessageBox::information(this, "Sucesso", "Reserva para " + selectedClient.getName() + " adicionado com sucesso", QMessageBox::Close);
 
+}
+
+// Limpar lista de reservas
+void MainWindow::clearReservationsList(){
+    reservations.clear();
+}
+
+int MainWindow::getReservationsSize(){
+    return reservations.size();
 }
 
 
@@ -176,18 +176,6 @@ void MainWindow::on_removeReservationButton_clicked()
     reservations.removeAt(reservationIndex);
     ui->clientReserveComboBox->addItem(selectedReservation.getClient().getName(), QVariant::fromValue(selectedReservation.getClient()));
     ui->roomReserveComboBox->addItem(QString::number(selectedReservation.getRoom().getNumber()), QVariant::fromValue(selectedReservation.getRoom()));
-
-
-    // qDebug() << "Reservas no hotel:";
-    // for (const Reservation &i : reservations) {
-    //     qDebug() << "Quarto:" << i.getRoom().getNumber()
-    //     << ", Cliente:" << i.getClient().getName()
-    //     << ", Data de Entrada:" << i.getCheckInDate()
-    //     << ", Data de Saída:" << i.getCheckOutDate();
-    // }
-
-
-
 }
 
 
@@ -212,7 +200,7 @@ void MainWindow::on_concludeControlAccessButton_clicked()
 
     employees << e;
     ui->nameControlAccessLineEdit->clear();
-    QMessageBox::information(this, "Sucesso", "Usuário " + name + " adicionado com sucesso", QMessageBox::Close);
+    //QMessageBox::information(this, "Sucesso", "Usuário " + name + " adicionado com sucesso", QMessageBox::Close);
 
 }
 

@@ -25,6 +25,8 @@ public:
 
     QList<Reservation>::const_iterator getReservationsBegin() const;
     QList<Reservation>::const_iterator getReservationsEnd() const;
+    void clearReservationsList();
+    int getReservationsSize();
 
 private slots:
     void on_accessControlButton_clicked();
