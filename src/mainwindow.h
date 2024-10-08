@@ -21,6 +21,10 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    // Retorna iteradores
+
+    QList<Reservation>::const_iterator getReservationsBegin() const;
+    QList<Reservation>::const_iterator getReservationsEnd() const;
 
 private slots:
     void on_accessControlButton_clicked();

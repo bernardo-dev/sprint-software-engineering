@@ -240,3 +240,12 @@ void MainWindow::on_concludeRoomAccessButton_clicked()
 
 }
 
+QList<Reservation>::const_iterator MainWindow::getReservationsBegin() const {
+    return reservations.constBegin();
+}
+
+QList<Reservation>::const_iterator MainWindow::getReservationsEnd() const {
+    return reservations.constEnd();
+}
+
+
