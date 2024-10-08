@@ -2,9 +2,11 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QStandardItemModel>
 #include "client.h"
 #include "room.h"
 #include "reservation.h"
+#include "employee.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -27,7 +29,7 @@ private slots:
 
     void on_clientControlButton_clicked();
 
-    void on_reportButton_clicked();
+    void on_roomButton_clicked();
 
     // void on_concludeButton_3_clicked();
 
@@ -35,16 +37,25 @@ private slots:
 
     void setupRoomComboBox();
 
+    void setupPositionComboBox();
+
     //void on_concludeControlClientButton_clicked();
 
     void on_concludeReserveButton_clicked();
 
     void on_removeReservationButton_clicked();
 
+    void on_concludeControlAccessButton_clicked();
+
+    void on_concludeControlClientButton_clicked();
+
+    void on_concludeRoomAccessButton_clicked();
+
 private:
     Ui::ControleHotel *ui;
     QList<Client> clients;
     QList<Room> rooms;
     QList<Reservation> reservations;
+    QList<Employee> employees;
 };
 #endif // MAINWINDOW_H

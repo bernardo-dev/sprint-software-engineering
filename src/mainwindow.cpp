@@ -13,8 +13,10 @@ MainWindow::MainWindow(QWidget *parent)
     reservations.clear();
     rooms.clear();
     clients.clear();
+    employees.clear();
     setupClientComboBox();
     setupRoomComboBox();
+    setupPositionComboBox();
 }
 
 MainWindow::~MainWindow()
@@ -37,7 +39,7 @@ void MainWindow::on_clientControlButton_clicked()
     ui->stackedWidget->setCurrentIndex(2);
 }
 
-void MainWindow::on_reportButton_clicked()
+void MainWindow::on_roomButton_clicked()
 {
     ui->stackedWidget->setCurrentIndex(3);
 }
@@ -109,6 +111,10 @@ void MainWindow::setupRoomComboBox()
     }
 }
 
+void MainWindow::setupPositionComboBox(){
+    ui->positionControlAccessComboBox->addItem("Recepcionista");
+    ui->positionControlAccessComboBox->addItem("Gerente");
+}
 
 
 
@@ -179,4 +185,58 @@ void MainWindow::on_removeReservationButton_clicked()
 
 
 
+
+
+
+
+void MainWindow::on_concludeControlAccessButton_clicked()
+{
+
+    int index = ui->positionControlAccessComboBox->currentIndex();
+    if(index == -1){
+        ui->nameControlAccessLineEdit->clear();
+        return;
+    }
+    QString position = ui->positionControlAccessComboBox->itemText(index);
+    QString name = ui->nameControlAccessLineEdit->text();
+
+    Employee e(name, position);
+
+    employees << e;
+    ui->nameControlAccessLineEdit->clear();
+
+}
+
+
+void MainWindow::on_concludeControlClientButton_clicked()
+{
+    QString name = ui->nameControlClientLineEdit->text();
+    QString document = ui->documentControlClientLineEdit->text();
+    QString address = ui->addressClientControlLineEdit->text();
+    QString phone = ui->cellphoneControlClientLineEdit->text();
+
+    Client c(name, document, address, phone);
+    clients << c;
+
+    ui->clientReserveComboBox->addItem(c.getName(), QVariant::fromValue(c));
+
+    ui->nameControlClientLineEdit->clear();
+    ui->documentControlClientLineEdit->clear();
+    ui->addressClientControlLineEdit->clear();
+    ui->cellphoneControlClientLineEdit->clear();
+}
+
+
+void MainWindow::on_concludeRoomAccessButton_clicked()
+{
+    int roomNumber = ui->roomControlspinBox->value();
+    double roomPrice = ui->roomControldoubleSpinBox->value();
+
+    Room r(roomNumber, roomPrice);
+    ui->roomReserveComboBox->addItem(QString::number(r.getNumber()), QVariant::fromValue(r));
+
+    ui->roomControlspinBox->clear();
+    ui->roomControldoubleSpinBox->clear();
+
+}
 

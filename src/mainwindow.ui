@@ -80,7 +80,7 @@
      <string>Controle de Clientes</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="reportButton">
+   <widget class="QPushButton" name="roomButton">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -95,7 +95,7 @@
      </font>
     </property>
     <property name="text">
-     <string>Relatórios</string>
+     <string>Controle de Quartos</string>
     </property>
    </widget>
    <widget class="QStackedWidget" name="stackedWidget">
@@ -111,21 +111,91 @@
      <string notr="true"/>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>3</number>
     </property>
     <widget class="QWidget" name="controlAccessPage">
-     <widget class="QLabel" name="controlAccessPageLabel">
+     <widget class="QTabWidget" name="employeeControlWidget">
       <property name="geometry">
        <rect>
-        <x>70</x>
-        <y>50</y>
-        <width>221</width>
-        <height>16</height>
+        <x>0</x>
+        <y>0</y>
+        <width>381</width>
+        <height>331</height>
        </rect>
       </property>
-      <property name="text">
-       <string>Tela de Controle de Acesso</string>
+      <property name="toolTip">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="create_4">
+       <property name="accessibleName">
+        <string/>
+       </property>
+       <attribute name="title">
+        <string>Criar</string>
+       </attribute>
+       <widget class="QLineEdit" name="nameControlAccessLineEdit">
+        <property name="geometry">
+         <rect>
+          <x>150</x>
+          <y>60</y>
+          <width>181</width>
+          <height>24</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="nameControlAccessLabel">
+        <property name="geometry">
+         <rect>
+          <x>50</x>
+          <y>70</y>
+          <width>65</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Nome</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="concludeControlAccessButton">
+        <property name="geometry">
+         <rect>
+          <x>150</x>
+          <y>240</y>
+          <width>181</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Concluir</string>
+        </property>
+       </widget>
+       <widget class="QComboBox" name="positionControlAccessComboBox">
+        <property name="geometry">
+         <rect>
+          <x>150</x>
+          <y>100</y>
+          <width>181</width>
+          <height>22</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="positionControlAccessLabel">
+        <property name="geometry">
+         <rect>
+          <x>50</x>
+          <y>100</y>
+          <width>65</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Cargo</string>
+        </property>
+       </widget>
+      </widget>
      </widget>
     </widget>
     <widget class="QWidget" name="reservePage">
@@ -148,7 +218,7 @@
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="create">
        <property name="accessibleName">
@@ -491,22 +561,95 @@
       </widget>
      </widget>
     </widget>
-    <widget class="QWidget" name="reportPage">
-     <widget class="QLabel" name="reportPageLabel">
+    <widget class="QWidget" name="roomPage">
+     <widget class="QTabWidget" name="roomControlWidget">
       <property name="geometry">
        <rect>
-        <x>104</x>
-        <y>80</y>
-        <width>201</width>
-        <height>20</height>
+        <x>0</x>
+        <y>0</y>
+        <width>381</width>
+        <height>331</height>
        </rect>
       </property>
-      <property name="text">
-       <string>Tela de Relatórios</string>
+      <property name="toolTip">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
-      <property name="buddy">
-       <cstring>reportPageLabel</cstring>
+      <property name="currentIndex">
+       <number>0</number>
       </property>
+      <widget class="QWidget" name="create_5">
+       <property name="accessibleName">
+        <string/>
+       </property>
+       <attribute name="title">
+        <string>Criar</string>
+       </attribute>
+       <widget class="QLabel" name="numberControlRoomLabel">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>60</y>
+          <width>111</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Número do Quarto</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="concludeRoomAccessButton">
+        <property name="geometry">
+         <rect>
+          <x>150</x>
+          <y>240</y>
+          <width>181</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Concluir</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="positionControlAccessLabel_2">
+        <property name="geometry">
+         <rect>
+          <x>24</x>
+          <y>100</y>
+          <width>101</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Preço do Quarto</string>
+        </property>
+       </widget>
+       <widget class="QSpinBox" name="roomControlspinBox">
+        <property name="geometry">
+         <rect>
+          <x>150</x>
+          <y>60</y>
+          <width>91</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="maximum">
+         <number>10000</number>
+        </property>
+       </widget>
+       <widget class="QDoubleSpinBox" name="roomControldoubleSpinBox">
+        <property name="geometry">
+         <rect>
+          <x>150</x>
+          <y>100</y>
+          <width>91</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="maximum">
+         <double>1000000.000000000000000</double>
+        </property>
+       </widget>
+      </widget>
      </widget>
     </widget>
    </widget>
