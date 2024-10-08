@@ -1,4 +1,4 @@
-QT       += core gui
+QT       += core gui testlib
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -16,7 +16,8 @@ SOURCES += \
     src/main.cpp \
     src/mainwindow.cpp \
     src/room.cpp \
-    src/reservation.cpp
+    src/reservation.cpp \
+    src/testefuncional.cpp
 
 HEADERS += \
     src/client.h \
@@ -25,7 +26,8 @@ HEADERS += \
     src/hotel.h \
     src/mainwindow.h \
     src/room.h \
-    src/reservation.h
+    src/reservation.h \
+    src/testefuncional.h
 
 FORMS += \
     src/mainwindow.ui
